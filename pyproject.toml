@@ -1,0 +1,20 @@
+[project]
+name = "advanced-rag"
+version = "0.1.0"
+description = "Advanced RAG playground: PDF ingestion, chunking, Ollama embeddings and Pinecone vector search."
+readme = "README.md"
+authors = [
+    { name = "DenKozlov", email = "den.kozlov1984@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "langchain-core>=0.3",
+    "langchain-community>=0.3",
+    "langchain-text-splitters>=0.3",
+    "langchain-ollama>=0.2",
+    "langchain-pinecone>=0.2",
+    "langchain-google-genai>=2.0",
+    "pinecone>=5.0",
+    "pypdf>=5.0",
+    "python-dotenv>=1.0",
+]
