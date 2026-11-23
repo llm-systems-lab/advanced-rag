@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "user_input": "Is the RAM upgradeable on the Lenovo ThinkPad T14 Gen 5 Intel?",
+    "reference": "Yes. The laptop uses two replaceable DDR5 SO-DIMM memory modules."
+  },
+  {
+    "id": 1,
+    "user_input": "What type and speed of RAM does the Lenovo ThinkPad T14 Gen 5 Intel support?",
+    "reference": "It supports DDR5-5600 SO-DIMM memory."
+  },
+  {
+    "id": 2,
+    "user_input": "What is the maximum supported SSD capacity of the Lenovo ThinkPad T14 Gen 5 Intel?",
+    "reference": "Lenovo specifies support for one M.2 2280 SSD with a capacity of up to 2 TB."
+  },
+  {
+    "id": 3,
+    "user_input": "What battery capacities are available for the Lenovo ThinkPad T14 Gen 5 Intel?",
+    "reference": "The laptop is available with 39.3 Wh or 52.5 Wh rechargeable lithium-ion batteries."
+  },
+  {
+    "id": 4,
+    "user_input": "Can the RAM be upgraded on the Dell XPS 13 9340?",
+    "reference": "No. The memory is integrated into the system board and is not upgradeable."
+  },
+  {
+    "id": 5,
+    "user_input": "What type and speed of memory does the Dell XPS 13 9340 use?",
+    "reference": "It uses onboard LPDDR5 or LPDDR5x memory. Supported speeds are 6400 MT/s and 7467 MT/s, depending on the configuration."
+  },
+  {
+    "id": 6,
+    "user_input": "Does the Dell XPS 13 9340 have a dedicated Ethernet port?",
+    "reference": "No. The Dell XPS 13 9340 does not have a dedicated network port."
+  },
+  {
+    "id": 7,
+    "user_input": "What SSD configurations are supported by the Dell XPS 13 9340?",
+    "reference": "It supports one M.2 2230 or M.2 2280 PCIe Gen 4 NVMe SSD. The M.2 2230 option is available in 512 GB, while M.2 2280 options include 1 TB, 2 TB, and 4 TB."
+  }
+]

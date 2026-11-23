@@ -1,0 +1,34 @@
+[
+  {
+    "id": 0,
+    "hypothetical_answer": "The Lenovo ThinkPad T14 Gen 5 (Intel) features two SO-DIMM slots that support DDR4‑3200 memory. The system can be configured with up to 32 GB of RAM (16 GB per slot), and the memory can be upgraded after purchase by installing compatible DDR4 SO‑DIMM modules."
+  },
+  {
+    "id": 1,
+    "hypothetical_answer": "The Lenovo ThinkPad T14 Gen 5 (Intel) supports DDR4 SDRAM, with a maximum data rate of 3200 MT/s (DDR4‑3200)."
+  },
+  {
+    "id": 2,
+    "hypothetical_answer": "The Lenovo ThinkPad T14 Gen 5 (Intel) supports up to a 2 TB PCIe NVMe SSD in each of its two M.2 2280 slots, allowing a maximum total storage capacity of 4 TB."
+  },
+  {
+    "id": 3,
+    "hypothetical_answer": "Battery capacities available for the Lenovo ThinkPad T14 Gen 5 (Intel) are 45 Wh, 65 Wh, and 90 Wh."
+  },
+  {
+    "id": 4,
+    "hypothetical_answer": "The Dell XPS 13 9340 comes with soldered DDR4 RAM that is not user‑upgradable. The memory modules are permanently attached to the motherboard, so the RAM cannot be replaced or expanded after purchase."
+  },
+  {
+    "id": 5,
+    "hypothetical_answer": "The Dell XPS 13 9340 is equipped with LPDDR4x memory running at 4266 MHz."
+  },
+  {
+    "id": 6,
+    "hypothetical_answer": "The Dell XPS 13 9340 does not include a built‑in Ethernet port. Connectivity to wired networks is achieved via Wi‑Fi or an optional USB‑C to Ethernet adapter."
+  },
+  {
+    "id": 7,
+    "hypothetical_answer": "The Dell XPS 13 9340 supports a single M.2 2280 NVMe SSD.  \n* Interface: PCIe 3.0 x4, NVMe 1.3  \n* Capacity options: 256 GB, 512 GB, 1 TB, 2 TB  \n* No SATA or 2.5‑inch drives are supported."
+  }
+]

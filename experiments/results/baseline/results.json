@@ -1,0 +1,132 @@
+{
+  "experiment": "baseline",
+  "num_questions": 8,
+  "scores": {
+    "faithfulness": 0.6333333333333333,
+    "answer_relevancy": 0.9446827409430087,
+    "context_precision": 0.8715277777299768,
+    "context_recall": 0.8125
+  },
+  "per_question": [
+    {
+      "user_input": "Is the RAM upgradeable on the Lenovo ThinkPad T14 Gen 5 Intel?",
+      "retrieved_contexts": [
+        "ThinkPad T16 Gen 3\n2. Install the memory module as shown below.\nThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD\nThinkPad T16 Gen 3\n67",
+        "ThinkPad T16 Gen 3\n60",
+        "• ThinkPad T16 Gen 3\n1. Remove the memory module as shown below.\nThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD\n66",
+        "Part location\n• ThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD\n• ThinkPad T16 Gen 3\n1. Remove the memory module shielding cap as shown below.\nThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD\n63"
+      ],
+      "response": "Based on the provided documentation, there is no information available regarding whether the RAM on the Lenovo ThinkPad T14 Gen 5 Intel is upgradeable.\n\nThe retrieved context mentions memory module removal and installation procedures for the \"ThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD\" and the \"ThinkPad T16 Gen 3,\" but it does not contain specific information about the ThinkPad T14 Gen 5 Intel model (*data/documents/lenovo-thinkpad-t14/1782724743821_thinkpad_t14g5_t16g3_p14sg5_en.pdf*, pages 68, 71, 72).",
+      "reference": "Yes. The laptop uses two replaceable DDR5 SO-DIMM memory modules.",
+      "faithfulness": 0.4,
+      "answer_relevancy": 0.9911088448802928,
+      "context_precision": 0.8055555555287036,
+      "context_recall": 0.5
+    },
+    {
+      "user_input": "What type and speed of RAM does the Lenovo ThinkPad T14 Gen 5 Intel support?",
+      "retrieved_contexts": [
+        "Monitor Support\nMonitor Support[1]\nSupports up to 4 independent displays (native display and 3 external monitors via HDMI® and Thunderbolt™) \n• HDMI® supports up to 4K@60Hz \n• Thunderbolt™ supports up to 8K@60Hz[2]\nNotes:\n[1] Refresh rates >60hz also supported, however max resolution will be limited.\n[2] 8K resolution support needs 2 display pipes. That is, simultaneous display number will “-1” when 8K resolution \ndisplayed.\nChipset\nChipset\nIntel® SoC (System on Chip) platform\nMemory\nMax Memory[1]\nUp to 64GB DDR5-5600\nMemory Slots\nTwo DDR5 SODIMM slots, dual-channel capable\nMemory Type\nDDR5-5600\nNotes:\n[1] The max memory is based on the test results with current Lenovo® memory offerings.\nStorage\nMax Storage Support[1]\nOne drive, up to 2TB M.2 2280 SSD\nStorage Slot[2]\nThinkPad T14 Gen 5 (Intel)\nPSREF\nProduct Specifications\nReference\n3 of 11ThinkPad T14 Gen 5 (Intel) - May 06 2026",
+        "User Guide\nThinkPad T14 Gen 5, ThinkPad P14s Gen 5 AMD, and ThinkPad T16\nGen 3",
+        "ThinkPad T14 Gen 5 (Intel)\nPSREF\nProduct Specifications\nReference\n11 of 11ThinkPad T14 Gen 5 (Intel) - May 06 2026",
+        "ThinkPad T16 Gen 3\n2. Install the memory module as shown below.\nThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD\nThinkPad T16 Gen 3\n67"
+      ],
+      "response": "The Lenovo ThinkPad T14 Gen 5 (Intel) supports the following memory specifications:\n\n*   **Memory Type:** DDR5-5600\n*   **Max Memory:** Up to 64GB\n*   **Memory Slots:** Two DDR5 SODIMM slots, dual-channel capable\n\n**Source:** *ThinkPad_T14_Gen_5_Intel_Spec.pdf*, page 2.",
+      "reference": "It supports DDR5-5600 SO-DIMM memory.",
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.8784380602346039,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "What is the maximum supported SSD capacity of the Lenovo ThinkPad T14 Gen 5 Intel?",
+      "retrieved_contexts": [
+        "Monitor Support\nMonitor Support[1]\nSupports up to 4 independent displays (native display and 3 external monitors via HDMI® and Thunderbolt™) \n• HDMI® supports up to 4K@60Hz \n• Thunderbolt™ supports up to 8K@60Hz[2]\nNotes:\n[1] Refresh rates >60hz also supported, however max resolution will be limited.\n[2] 8K resolution support needs 2 display pipes. That is, simultaneous display number will “-1” when 8K resolution \ndisplayed.\nChipset\nChipset\nIntel® SoC (System on Chip) platform\nMemory\nMax Memory[1]\nUp to 64GB DDR5-5600\nMemory Slots\nTwo DDR5 SODIMM slots, dual-channel capable\nMemory Type\nDDR5-5600\nNotes:\n[1] The max memory is based on the test results with current Lenovo® memory offerings.\nStorage\nMax Storage Support[1]\nOne drive, up to 2TB M.2 2280 SSD\nStorage Slot[2]\nThinkPad T14 Gen 5 (Intel)\nPSREF\nProduct Specifications\nReference\n3 of 11ThinkPad T14 Gen 5 (Intel) - May 06 2026",
+        "One M.2 2280 PCIe® 4.0 x4 slot\nStorage Type**\nDisk Type Interface Offering Security\nM.2 2280 SSD PCIe® NVMe®, PCIe® 4.0 x4 256GB / 512GB / 1TB Opal 2.0\nM.2 2280 SSD PCIe® NVMe®, PCIe® 4.0 x4 Performance 512GB / 1TB / 2TB Opal 2.0\nNotes:\n[1] The storage capacity supported is based on the test results with current Lenovo® storage offerings.\n[2] The actual data transfer rate of the following PCIe® interface also depends on the capabilities of the connected PCIe® \ndevice. The listed values represent theoretical maximums. \nPCIe® 3.0 (x2 / x4): 2 GB/s (16 Gbps) / 4 GB/s (32 Gbps); \nPCIe® 4.0 (x2 / x4): 4 GB/s (32 Gbps) / 8 GB/s (64 Gbps); \nPCIe® 5.0 (x2 / x4): 8 GB/s (64 Gbps) / 16 GB/s (128 Gbps).\nRemovable Storage\nCard Reader\nNo card reader\nMulti-Media\nAudio Chip\nHigh Definition (HD) Audio, Realtek® ALC3287 codec\nSpeakers\nStereo speakers, 2W x2, Dolby Audio™\nMicrophone\nDual-microphone array, 360° far-field, Dolby Voice®•\nNo microphone•\nCamera**",
+        "ThinkPad T14 Gen 5 (Intel)\nPSREF\nProduct Specifications\nReference\n11 of 11ThinkPad T14 Gen 5 (Intel) - May 06 2026",
+        "Appendix B Compliance information\nThis chapter provides the compliance information of your computer.\nFor compliance information, refer to Regulatory Notice at https://pcsupport.lenovo.com and Generic\nSafety and Compliance Notices at https://pcsupport.lenovo.com/docs/generic_notices.\nCertiﬁcation-related information\nThis section provides certiﬁcation-related information, such as product name and machine type.\nTable 1: For Intel models\nProduct name Compliance ID Machine type(s)\nThinkPad T14 Gen 5\n• TP00159A\n• TP00159A01\n• TP00159A11\n21ML and 21MM\nThinkPad T16 Gen 3\n• TP00160A\n• TP00160A01\n• TP00160A11\n21MN and 21MQ\nTable 2: For AMD models\nProduct name Compliance ID Machine type(s)\nThinkPad T14 Gen 5\n• TP00159B\n• TP00159B01\n• TP00159B11\n21MC and 21MD\nThinkPad P14s Gen 5 AMD\n• TP00159B\n• TP00159B01\n• TP00159B11\n21ME and 21MF\n1 for India only\nFurther compliance information related to your product is available at https://www.lenovo.com/\ncompliance.\n96"
+      ],
+      "response": "The maximum supported SSD capacity for the Lenovo ThinkPad T14 Gen 5 (Intel) is 2TB, using a single M.2 2280 SSD drive (*ThinkPad_T14_Gen_5_Intel_Spec.pdf*, page 2).",
+      "reference": "Lenovo specifies support for one M.2 2280 SSD with a capacity of up to 2 TB.",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.9969127683903951,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "What battery capacities are available for the Lenovo ThinkPad T14 Gen 5 Intel?",
+      "retrieved_contexts": [
+        "For ThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD:\nBuilt-in battery CRUable or Non-CRUable Battery capacity Color on the front\nCRUable 52.5 W Grey\nNon-CRUable 39.3 W Black\nFor ThinkPad T16 Gen 3:\nBuilt-in battery CRUable or Non-CRUable Battery capacity Color on the front\nCRUable 86 W Grey\nNon-CRUable 52.5 W Black\nFor access, do the following:\n1. Disable the built-in battery. See Disable the built-in battery on page 52.\n2. Turn oﬀ the computer and disconnect the computer from ac power and all connected cables.\n3. Close the computer display and turn over the computer.\n4. Remove the base cover assembly. See Base cover assembly on page 58.\nPart location\nNote:\nYou can scan the QR code on the CRUable built-in battery to view the battery replacement\nvideo.\n   \n• ThinkPad T14 Gen 5 and ThinkPad P14s Gen 5 AMD\n79",
+        "• M.2 solid-state drive bracket*\n• Nano-SIM-card tray*\n• Power cord*\nOptional-service CRUs\n• Built-in battery with large capacity (52.5 W battery for ThinkPad T14 Gen 5 and ThinkPad P14s\nGen 5 AMD, 86 W battery for ThinkPad T16 Gen 3)\n• Wireless WAN module*\n• Wireless-WAN-module bracket*\n* for selected models\n51",
+        "• ThinkPad T16 Gen 3\n1. Remove the M.2 solid-state drive bracket as shown below.\n2. Install the M.2 solid-state drive bracket in reverse order.\nBuilt-in battery with large capacity\nFollow the instructions to replace the built-in battery with large capacity.\n77",
+        "Weight[2]\nModels Weight\nModels with black cover and 39.3Wh battery Starting at 1.31 kg (2.89 lbs)\nModels with grey cover and 39.3Wh battery Starting at 1.36 kg (2.99 lbs)\nModels with black cover and 52.5Wh battery Starting at 1.38 kg (3.05 lbs)\nModels with grey cover and 52.5Wh battery Starting at 1.43 kg (3.15 lbs)\nCase Color**\nBlack•\nGrey•\nCase Material**\nModels with black cover: PC + 20% CF (top), PC + 20% CF (bottom)•\nModels with grey cover: aluminium (top), PC + 20% CF (bottom)•\nNotes:\n[1] The system dimensions may vary depending on configurations.\n[2] The system weight is approximate and based on results in Lenovo® lab, which varies depending on the source of \ncomponent, variance of the distribution of each component, and manufacturing process. It may not be the exact weight \nfor each specific model.\nCONNECTIVITY\nNetwork\nWLAN + Bluetooth®**[1]\nIntel® Wi-Fi® 6E AX211, 802.11ax 2x2 Wi-Fi® + Bluetooth® 5.3, Intel® vPro® technology support[2]•"
+      ],
+      "response": "Based on the provided documentation for the ThinkPad T14 Gen 5, the following battery capacities are available:\n\n*   **39.3Wh battery**\n*   **52.5Wh battery**\n\n**Source:** *ThinkPad_T14_Gen_5_Intel_Spec.pdf*, page 5.",
+      "reference": "The laptop is available with 39.3 Wh or 52.5 Wh rechargeable lithium-ion batteries.",
+      "faithfulness": 0.25,
+      "answer_relevancy": 0.946552039318219,
+      "context_precision": 0.9166666666361111,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "Can the RAM be upgraded on the Dell XPS 13 9340?",
+      "retrieved_contexts": [
+        "Chipset\nThe following table lists the details of the chipset that is supported by your XPS 13 9340.\nTable 5. Chipset \nDescription Values\nChipset Integrated in the processor\nProcessor Intel Core Ultra 5/7\nDRAM bus width 128-bit\nFlash EPROM 64 MB\nPCIe bus Up to Gen4\nOperating system\nYour XPS 13 9340 supports the following operating systems:\n● Windows 11 Pro\n● Windows 11 Pro National Education\n● Windows 11 Home\n● Ubuntu Linux 22.04 LTS\nMemory\nThe following table lists the memory specifications of your XPS 13 9340.\nTable 6. Memory specifications \nDescription Values\nMemory slots No memory slots\nNOTE: The memory is integrated on the system board \nand is not upgradeable.\nMemory type LPDDR5/LPDDR5x\nMemory speed ● 6400 MT/s\n● 7467 MT/s\nMaximum memory configuration 64 GB\nMinimum memory configuration 8 GB\nMemory configurations supported ● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)",
+        "Memory configurations supported ● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 64 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\nSpecifications of XPS 13 9340 15",
+        "Software\nThis chapter details the supported operating systems along with instructions on how to install the drivers.\nOperating system\nYour XPS 13 9340 supports the following operating systems:\n● Windows 11 Pro\n● Windows 11 Pro National Education\n● Windows 11 Home\n● Ubuntu Linux 22.04 LTS\nDrivers and downloads\nWhen troubleshooting, downloading, or installing drivers, it is recommended that you read the Dell Knowledge Base article \nDrivers and Downloads FAQs.\n6\nSoftware 77",
+        "Core count 14 16 16\nThread count 18 22 22\nSpeed Up to 4.50 GHz Up to 4.80 GHz Up to 5.0 GHz\nCache 18 MB 24 MB 24 MB\nIntegrated graphics Intel Arc Graphics Intel Arc Graphics Intel Arc Graphics\n3\n14 Specifications of XPS 13 9340"
+      ],
+      "response": "No, the RAM on the Dell XPS 13 9340 cannot be upgraded. According to the owner's manual, there are no memory slots, and the memory is integrated on the system board (*Dell XPS 13 9340 Owner's Manual*, p. 14).",
+      "reference": "No. The memory is integrated into the system board and is not upgradeable.",
+      "faithfulness": 0.6666666666666666,
+      "answer_relevancy": 0.9949194520240436,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "What type and speed of memory does the Dell XPS 13 9340 use?",
+      "retrieved_contexts": [
+        "Memory configurations supported ● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 64 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\nSpecifications of XPS 13 9340 15",
+        "Chipset\nThe following table lists the details of the chipset that is supported by your XPS 13 9340.\nTable 5. Chipset \nDescription Values\nChipset Integrated in the processor\nProcessor Intel Core Ultra 5/7\nDRAM bus width 128-bit\nFlash EPROM 64 MB\nPCIe bus Up to Gen4\nOperating system\nYour XPS 13 9340 supports the following operating systems:\n● Windows 11 Pro\n● Windows 11 Pro National Education\n● Windows 11 Home\n● Ubuntu Linux 22.04 LTS\nMemory\nThe following table lists the memory specifications of your XPS 13 9340.\nTable 6. Memory specifications \nDescription Values\nMemory slots No memory slots\nNOTE: The memory is integrated on the system board \nand is not upgradeable.\nMemory type LPDDR5/LPDDR5x\nMemory speed ● 6400 MT/s\n● 7467 MT/s\nMaximum memory configuration 64 GB\nMinimum memory configuration 8 GB\nMemory configurations supported ● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)",
+        "Core count 14 16 16\nThread count 18 22 22\nSpeed Up to 4.50 GHz Up to 4.80 GHz Up to 5.0 GHz\nCache 18 MB 24 MB 24 MB\nIntegrated graphics Intel Arc Graphics Intel Arc Graphics Intel Arc Graphics\n3\n14 Specifications of XPS 13 9340",
+        "Table 19. Fingerprint reader specifications \nDescription Values\nSensor technology Trans-capacitive sensing\nSensor resolution 500 dpi\nSensor pixel size 88 x 108\nFingerprint reader\nThe following table lists the fingerprint-reader specifications of your XPS 13 9340.\nTable 20. Fingerprint reader specifications \nDescription Values\nSensor technology Trans-capacitive sensing\nSensor resolution 500 dpi\nSensor pixel size 88 x 108\nSensors\nThe following table lists the sensors of your XPS 13 9340.\nTable 21. Sensor \nSensor support\nAmbient Light Sensor\nAdaptive Thermal Performance\nDell ExpressSign-in 2.0 (via Intel Camera Sensing Technology)\nWake/Power on with lid open\nHall sensor\nGPU—Integrated\nThe following table lists the specifications of the integrated Graphics Processing Unit (GPU) supported by your XPS 13 9340.\nTable 22. GPU—Integrated \nController Memory size Processor\nIntel Arc Graphics Shared system memory Intel Core Ultra 5/7\nSpecifications of XPS 13 9340 23"
+      ],
+      "response": "The Dell XPS 13 9340 uses LPDDR5 or LPDDR5x memory. The supported speeds are 6400 MT/s and 7467 MT/s.\n\nThe specific memory configuration depends on the total capacity:\n\n| Memory Capacity | Memory Type | Memory Speed |\n| :--- | :--- | :--- |\n| 8 GB | LPDDR5 | 6400 MT/s |\n| 16 GB | LPDDR5x | 7467 MT/s |\n| 32 GB | LPDDR5x | 7467 MT/s |\n| 64 GB | LPDDR5x | 7467 MT/s |\n\n**Note:** The memory is integrated on the system board and is not upgradeable (*xps-13-9340-owners-manual-en-us.pdf*, page 14).",
+      "reference": "It uses onboard LPDDR5 or LPDDR5x memory. Supported speeds are 6400 MT/s and 7467 MT/s, depending on the configuration.",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8855377664726857,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "Does the Dell XPS 13 9340 have a dedicated Ethernet port?",
+      "retrieved_contexts": [
+        "Media-card reader Not supported\nPower-adapter port DC-IN through one of the two Thunderbolt 4 USB Type-C \nports\nNOTE: You can connect a Dell Docking Station to this \nport. For more information, see the knowledge base article \n000124295 at Dell Support Site.\nSecurity-cable slot Not supported\nInternal slots\nThe following table lists the internal slots of your XPS 13 9340.\nTable 8. Internal slots \nDescription Values\nM.2 One M.2 slot for M.2 2230 or M.2 2280 solid-state drive\nNOTE: To learn more about the features of different \ntypes of M.2 cards, search Dell Support Site.\nWireless module\nThe following table lists the Wireless Local Area Network (WLAN) module that is supported on your XPS 13 9340.\nTable 9. Wireless module specifications \nDescription Values\nModel number Intel BE200\nTransfer rate Up to 5760 Mbps\n16 Specifications of XPS 13 9340",
+        "External ports and slots\nThe following table lists the external ports and slots on your XPS 13 9340.\nTable 7. External ports and slots \nDescription Values\nUSB ports Two Thunderbolt 4 ports with Power Delivery (Type-C)\nNOTE: Connect the USB Type-C power adapter to only \none of the two USB Type-C ports.\nNOTE: You can connect a Dell Docking Station to this \nport. For more information, see the knowledge base article \n000124295 at Dell Support Site.\nAudio port Two Thunderbolt 4 ports with Power Delivery (Type-C)\nNOTE: A USB-C to 3.5 mm AUX audio adapter can be \npurchased separately to connect an audio device.\nVideo port(s) Two Thunderbolt 4 ports with Power Delivery (Type-C)\nNOTE: A USB-C to DisplayPort adapter (sold separately) \nis required to connect a DisplayPort device.\nMedia-card reader Not supported\nPower-adapter port DC-IN through one of the two Thunderbolt 4 USB Type-C \nports\nNOTE: You can connect a Dell Docking Station to this",
+        "Software\nThis chapter details the supported operating systems along with instructions on how to install the drivers.\nOperating system\nYour XPS 13 9340 supports the following operating systems:\n● Windows 11 Pro\n● Windows 11 Pro National Education\n● Windows 11 Home\n● Ubuntu Linux 22.04 LTS\nDrivers and downloads\nWhen troubleshooting, downloading, or installing drivers, it is recommended that you read the Dell Knowledge Base article \nDrivers and Downloads FAQs.\n6\nSoftware 77",
+        "● Connect to a network for Windows updates.\nNOTE: If connecting to a secured wireless network, enter the password for the wireless network access when \nprompted.\n● If connected to the Internet, sign in with or create a Microsoft account.\n● On the Support and Protection screen, enter your contact details.\n3. Locate and use Dell apps from the Windows Start menu—Recommended.\n2\n12 Set up your XPS 13 9340"
+      ],
+      "response": "No, the Dell XPS 13 9340 does not have a dedicated Ethernet port.\n\nAccording to the \"External ports and slots\" table, the device features two Thunderbolt 4 ports (USB Type-C) which handle power, data, audio, and video; it does not list an Ethernet port.\n\nSource: *xps-13-9340-owners-manual-en-us.pdf*, page 15.",
+      "reference": "No. The Dell XPS 13 9340 does not have a dedicated network port.",
+      "faithfulness": 0.5,
+      "answer_relevancy": 1.0000000000000002,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "What SSD configurations are supported by the Dell XPS 13 9340?",
+      "retrieved_contexts": [
+        "Software\nThis chapter details the supported operating systems along with instructions on how to install the drivers.\nOperating system\nYour XPS 13 9340 supports the following operating systems:\n● Windows 11 Pro\n● Windows 11 Pro National Education\n● Windows 11 Home\n● Ubuntu Linux 22.04 LTS\nDrivers and downloads\nWhen troubleshooting, downloading, or installing drivers, it is recommended that you read the Dell Knowledge Base article \nDrivers and Downloads FAQs.\n6\nSoftware 77",
+        "Chipset\nThe following table lists the details of the chipset that is supported by your XPS 13 9340.\nTable 5. Chipset \nDescription Values\nChipset Integrated in the processor\nProcessor Intel Core Ultra 5/7\nDRAM bus width 128-bit\nFlash EPROM 64 MB\nPCIe bus Up to Gen4\nOperating system\nYour XPS 13 9340 supports the following operating systems:\n● Windows 11 Pro\n● Windows 11 Pro National Education\n● Windows 11 Home\n● Ubuntu Linux 22.04 LTS\nMemory\nThe following table lists the memory specifications of your XPS 13 9340.\nTable 6. Memory specifications \nDescription Values\nMemory slots No memory slots\nNOTE: The memory is integrated on the system board \nand is not upgradeable.\nMemory type LPDDR5/LPDDR5x\nMemory speed ● 6400 MT/s\n● 7467 MT/s\nMaximum memory configuration 64 GB\nMinimum memory configuration 8 GB\nMemory configurations supported ● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)",
+        "Memory configurations supported ● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 64 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\nSpecifications of XPS 13 9340 15",
+        "Media-card reader Not supported\nPower-adapter port DC-IN through one of the two Thunderbolt 4 USB Type-C \nports\nNOTE: You can connect a Dell Docking Station to this \nport. For more information, see the knowledge base article \n000124295 at Dell Support Site.\nSecurity-cable slot Not supported\nInternal slots\nThe following table lists the internal slots of your XPS 13 9340.\nTable 8. Internal slots \nDescription Values\nM.2 One M.2 slot for M.2 2230 or M.2 2280 solid-state drive\nNOTE: To learn more about the features of different \ntypes of M.2 cards, search Dell Support Site.\nWireless module\nThe following table lists the Wireless Local Area Network (WLAN) module that is supported on your XPS 13 9340.\nTable 9. Wireless module specifications \nDescription Values\nModel number Intel BE200\nTransfer rate Up to 5760 Mbps\n16 Specifications of XPS 13 9340"
+      ],
+      "response": "According to the *Dell XPS 13 9340 Owner's Manual* (page 15), the device features one M.2 slot that supports the following solid-state drive (SSD) types:\n\n*   **M.2 2230**\n*   **M.2 2280**\n\nThe provided documentation does not specify supported storage capacities or performance tiers for these drives.",
+      "reference": "It supports one M.2 2230 or M.2 2280 PCIe Gen 4 NVMe SSD. The M.2 2230 option is available in 512 GB, while M.2 2280 options include 1 TB, 2 TB, and 4 TB.",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8639929962238295,
+      "context_precision": 0.249999999975,
+      "context_recall": 0.0
+    }
+  ]
+}

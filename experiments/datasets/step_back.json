@@ -1,0 +1,34 @@
+[
+  {
+    "id": 0,
+    "step_back_question": "What is the current industry trend regarding memory modularity and soldered RAM in modern thin-and-light business laptops?"
+  },
+  {
+    "id": 1,
+    "step_back_question": "What are the standard memory specifications and compatibility requirements for modern laptop architectures?"
+  },
+  {
+    "id": 2,
+    "step_back_question": "What are the technical limitations and specifications governing internal storage expansion in modern enterprise-grade laptops?"
+  },
+  {
+    "id": 3,
+    "step_back_question": "What are the standard configuration options and power specifications for batteries in modern enterprise-grade laptops?"
+  },
+  {
+    "id": 4,
+    "step_back_question": "What are the architectural limitations regarding memory scalability in modern thin-and-light laptop designs?"
+  },
+  {
+    "id": 5,
+    "step_back_question": "What are the standard memory architecture and performance specifications for modern ultra-portable laptops?"
+  },
+  {
+    "id": 6,
+    "step_back_question": "What are the standard connectivity and port limitations of modern ultra-thin laptop designs?"
+  },
+  {
+    "id": 7,
+    "step_back_question": "What are the technical specifications and interface standards that determine storage compatibility for modern thin-and-light laptop architectures?"
+  }
+]
