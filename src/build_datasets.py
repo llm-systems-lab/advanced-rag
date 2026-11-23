@@ -1,14 +1,15 @@
-"""Generate the HyDE dataset under ``experiments/datasets``.
+"""Generate the LLM-derived technique datasets under ``experiments/datasets``.
 
-``hyde.json`` stores only the generated ``hypothetical_answer`` per question,
-keyed by the question ``id`` (its index in ``data/evaluation/questions.json``).
-The base questions are never duplicated.
+Each dataset stores only the generated fields per question, keyed by the
+question ``id``; the base questions are never duplicated.
 
-``step_back.json`` holds the authored step-back rewrites in the same id-keyed
-shape and is not regenerated here.
+- ``hyde.json``: ``hypothetical_answer`` (see HyDE).
+- ``multi_query.json``: ``queries`` (three paraphrases for RAG Fusion).
+
+``step_back.json`` holds authored step-back rewrites and is not regenerated here.
 
 Usage:
-    uv run python src/build_datasets.py [--force]
+    uv run python src/build_datasets.py [--only hyde|multi_query] [--force]
 """
 
 from __future__ import annotations
@@ -20,13 +21,14 @@ from dotenv import load_dotenv
 from dataset_utils import DATASETS_DIR, load_questions, write_json
 from ingestion import PROJECT_ROOT
 from techniques.query_transformation.hyde import generate_hypothetical_answer
+from techniques.query_transformation.multi_query import generate_multiple_queries
 
 
 def build_hyde(questions: list[dict]) -> list[dict]:
     """Generate a hypothetical answer per question with the Groq model."""
     records: list[dict] = []
     for item in questions:
-        print(f"  generating HyDE passage: {item['user_input'][:60]}")
+        print(f"  [hyde] {item['user_input'][:60]}")
         records.append(
             {
                 "id": item["id"],
@@ -36,20 +38,43 @@ def build_hyde(questions: list[dict]) -> list[dict]:
     return records
 
 
+def build_multi_query(questions: list[dict]) -> list[dict]:
+    """Generate paraphrased queries per question with the Groq model."""
+    records: list[dict] = []
+    for item in questions:
+        print(f"  [multi_query] {item['user_input'][:60]}")
+        records.append(
+            {
+                "id": item["id"],
+                "queries": generate_multiple_queries(item["user_input"]),
+            }
+        )
+    return records
+
+
+BUILDERS = {"hyde": build_hyde, "multi_query": build_multi_query}
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate the HyDE dataset")
+    parser = argparse.ArgumentParser(description="Generate technique datasets")
     parser.add_argument(
-        "--force", action="store_true", help="Regenerate the HyDE passages"
+        "--only", choices=sorted(BUILDERS), help="Build a single dataset"
+    )
+    parser.add_argument(
+        "--force", action="store_true", help="Regenerate existing datasets"
     )
     args = parser.parse_args()
 
     load_dotenv(PROJECT_ROOT / ".env")
-    hyde_path = DATASETS_DIR / "hyde.json"
-    if hyde_path.exists() and not args.force:
-        print(f"Keeping existing {hyde_path} (use --force to regenerate)")
-        return
+    questions = load_questions()
+    targets = [args.only] if args.only else list(BUILDERS)
 
-    write_json(hyde_path, build_hyde(load_questions()))
+    for name in targets:
+        path = DATASETS_DIR / f"{name}.json"
+        if path.exists() and not args.force:
+            print(f"Keeping existing {path} (use --force to regenerate)")
+            continue
+        write_json(path, BUILDERS[name](questions))
 
 
 if __name__ == "__main__":

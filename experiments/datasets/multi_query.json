@@ -1,0 +1,66 @@
+[
+  {
+    "id": 0,
+    "queries": [
+      "Can the memory be expanded on the Lenovo ThinkPad T14 Gen 5 (Intel)?",
+      "Is it possible to upgrade the RAM in the Lenovo ThinkPad T14 Gen 5 with an Intel processor?",
+      "Does the Lenovo ThinkPad T14 Gen 5 (Intel) support additional memory modules?"
+    ]
+  },
+  {
+    "id": 1,
+    "queries": [
+      "Which DDR memory specifications are compatible with the Lenovo ThinkPad T14 Gen 5 (Intel) model?",
+      "What are the supported RAM type and maximum speed for the Lenovo ThinkPad T14 Gen 5 Intel edition?",
+      "What DDR generation and frequency does the Lenovo ThinkPad T14 Gen 5 Intel support for memory upgrades?"
+    ]
+  },
+  {
+    "id": 2,
+    "queries": [
+      "What is the maximum SSD capacity supported by the Lenovo ThinkPad T14 Gen 5 (Intel) laptop?",
+      "What is the largest NVMe drive size that the Lenovo ThinkPad T14 Gen 5 Intel model can accommodate?",
+      "What is the upper limit of SSD storage that the Lenovo ThinkPad T14 Gen 5 (Intel) can support?"
+    ]
+  },
+  {
+    "id": 3,
+    "queries": [
+      "What battery capacity options are offered for the Lenovo ThinkPad T14 Gen 5 Intel?",
+      "Which battery capacities can be used with the Lenovo ThinkPad T14 Gen 5 (Intel version)?",
+      "What are the available battery capacities for the Lenovo ThinkPad T14 Gen 5 equipped with an Intel processor?"
+    ]
+  },
+  {
+    "id": 4,
+    "queries": [
+      "Is it possible to increase the memory capacity on a Dell XPS 13 9340?",
+      "Can the RAM in the Dell XPS 13 9340 be upgraded or expanded?",
+      "What are the options for upgrading the memory modules in a Dell XPS 13 9340 laptop?"
+    ]
+  },
+  {
+    "id": 5,
+    "queries": [
+      "Which DDR generation and clock rate does the Dell XPS 13 9340 support for its RAM?",
+      "What are the memory specifications—type and speed—for the Dell XPS 13 9340 model?",
+      "Can you specify the RAM type (e.g., DDR4) and maximum frequency for the Dell XPS 13 9340?"
+    ]
+  },
+  {
+    "id": 6,
+    "queries": [
+      "Is there a built‑in Ethernet port on the Dell XPS 13 9340?",
+      "Does the Dell XPS 13 9340 include a dedicated RJ‑45 network interface?",
+      "What networking ports are available on the Dell XPS 13 9340—specifically, does it have a wired Ethernet connector?"
+    ]
+  },
+  {
+    "id": 7,
+    "queries": [
+      "Which SSD options are compatible with the Dell XPS 13 9340 laptop?",
+      "What solid‑state drive configurations does the Dell XPS 13 9340 support?",
+      "Which M.2 NVMe or SATA SSD sizes and form factors are supported by the Dell XPS 13 9340?"
+    ]
+  }
+]

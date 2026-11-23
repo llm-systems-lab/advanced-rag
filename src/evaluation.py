@@ -192,7 +192,7 @@ def main() -> None:
     parser.add_argument("experiment", nargs="?", help="Experiment name")
     parser.add_argument(
         "--technique",
-        choices=["standard", "step_back", "hyde"],
+        choices=["standard", "step_back", "hyde", "multi_query"],
         default="standard",
         help="RAG technique to evaluate",
     )
@@ -214,6 +214,14 @@ def main() -> None:
         )
         default_experiment = "hyde"
         artifacts_path = DATASETS_DIR / "hyde.json"
+    elif args.technique == "multi_query":
+        from techniques.query_transformation.multi_query import answer_multi_query
+
+        answer_fn = lambda item: answer_multi_query(
+            item["user_input"], item.get("queries")
+        )
+        default_experiment = "multi_query"
+        artifacts_path = DATASETS_DIR / "multi_query.json"
     else:
         answer_fn = _standard_answer
         default_experiment = "baseline"
