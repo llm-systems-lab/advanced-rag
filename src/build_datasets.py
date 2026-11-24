@@ -18,15 +18,22 @@ import argparse
 
 from dotenv import load_dotenv
 
-from dataset_utils import DATASETS_DIR, load_questions, write_json
+from dataset_utils import (
+    DATASETS_DIR,
+    Question,
+    QuestionArtifact,
+    load_questions,
+    write_json,
+)
 from ingestion import PROJECT_ROOT
 from techniques.query_transformation.hyde import generate_hypothetical_answer
 from techniques.query_transformation.multi_query import generate_multiple_queries
+from tracing import flush
 
 
-def build_hyde(questions: list[dict]) -> list[dict]:
+def build_hyde(questions: list[Question]) -> list[QuestionArtifact]:
     """Generate a hypothetical answer per question with the Groq model."""
-    records: list[dict] = []
+    records: list[QuestionArtifact] = []
     for item in questions:
         print(f"  [hyde] {item['user_input'][:60]}")
         records.append(
@@ -38,9 +45,9 @@ def build_hyde(questions: list[dict]) -> list[dict]:
     return records
 
 
-def build_multi_query(questions: list[dict]) -> list[dict]:
+def build_multi_query(questions: list[Question]) -> list[QuestionArtifact]:
     """Generate paraphrased queries per question with the Groq model."""
-    records: list[dict] = []
+    records: list[QuestionArtifact] = []
     for item in questions:
         print(f"  [multi_query] {item['user_input'][:60]}")
         records.append(
@@ -75,6 +82,8 @@ def main() -> None:
             print(f"Keeping existing {path} (use --force to regenerate)")
             continue
         write_json(path, BUILDERS[name](questions))
+
+    flush()
 
 
 if __name__ == "__main__":

@@ -8,6 +8,7 @@ from contextlib import contextmanager
 from langchain_core.documents import Document
 
 from generation import stream_answer
+from tracing import flush
 
 BOLD = "\033[1m"
 DIM = "\033[2m"
@@ -99,6 +100,7 @@ def main() -> None:
             continue
 
     print(f"{DIM}Goodbye.{RESET}")
+    flush()
 
 
 if __name__ == "__main__":

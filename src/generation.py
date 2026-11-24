@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 from collections.abc import Iterator
+from contextlib import ExitStack
 from dataclasses import dataclass
 
 from dotenv import load_dotenv
@@ -15,6 +16,13 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 from ingestion import PROJECT_ROOT
 from retrieval import TOP_K, retrieve_documents
+from tracing import (
+    Observation,
+    answer_trace,
+    describe_documents,
+    get_callback_handler,
+    retrieval_trace,
+)
 
 SYSTEM_PROMPT = """You are a Product Research Assistant specializing in
 technical product documentation.
@@ -118,21 +126,60 @@ def build_rag_chain() -> Runnable[dict[str, str], str]:
     return PROMPT | build_llm() | StrOutputParser()
 
 
+def generate(question: str, documents: list[Document]) -> str:
+    """Invoke the RAG chain with Langfuse tracing attached as a callback."""
+    return build_rag_chain().invoke(
+        {"context": format_context(documents), "question": question},
+        config={"callbacks": [get_callback_handler()]},
+    )
+
+
 def answer(question: str, k: int = TOP_K) -> Answer:
     """Retrieve context for ``question`` and generate a grounded answer."""
-    documents = retrieve_documents(question, k=k)
-    text = build_rag_chain().invoke(
-        {"context": format_context(documents), "question": question}
-    )
+    with answer_trace(question, technique="baseline", metadata={"k": k}) as span:
+        with retrieval_trace(question) as retriever:
+            documents = retrieve_documents(question, k=k)
+            retriever.update(output=describe_documents(documents))
+        text = generate(question, documents)
+        span.update(output={"answer": text})
     return Answer(text=text, sources=documents)
 
 
 def stream_answer(
     question: str, k: int = TOP_K
 ) -> tuple[list[Document], Iterator[str]]:
-    """Retrieve context and stream the grounded answer chunk by chunk."""
-    documents = retrieve_documents(question, k=k)
-    stream = build_rag_chain().stream(
-        {"context": format_context(documents), "question": question}
+    """Retrieve context (traced) and stream the grounded answer chunk by chunk.
+
+    The ``rag-answer`` span is opened before retrieval so the ``retrieve-context``
+    step nests under it and actually wraps the database call, and it is kept open
+    until the returned chunk iterator is exhausted.
+    """
+    stack = ExitStack()
+    span = stack.enter_context(
+        answer_trace(question, technique="baseline", metadata={"k": k})
     )
-    return documents, stream
+    try:
+        with retrieval_trace(question) as retriever:
+            documents = retrieve_documents(question, k=k)
+            retriever.update(output=describe_documents(documents))
+    except BaseException:
+        stack.close()
+        raise
+    return documents, _stream_traced(span, stack, question, documents)
+
+
+def _stream_traced(
+    span: Observation,
+    stack: ExitStack,
+    question: str,
+    documents: list[Document],
+) -> Iterator[str]:
+    """Stream the answer inside the open trace, closing it when streaming ends."""
+    try:
+        yield from build_rag_chain().stream(
+            {"context": format_context(documents), "question": question},
+            config={"callbacks": [get_callback_handler()]},
+        )
+        span.update(output={"sources": len(documents)})
+    finally:
+        stack.close()

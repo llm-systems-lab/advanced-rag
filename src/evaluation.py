@@ -16,7 +16,7 @@ import re
 import warnings
 from collections.abc import Callable
 from pathlib import Path
-from typing import Any
+from typing import TypedDict, cast
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -34,8 +34,8 @@ from ragas import (
     evaluate,
 )
 from ragas.dataset_schema import EvaluationResult
-from ragas.embeddings import LangchainEmbeddingsWrapper
-from ragas.llms import LangchainLLMWrapper
+from ragas.embeddings.base import LangchainEmbeddingsWrapper
+from ragas.llms.base import LangchainLLMWrapper
 from ragas.metrics import (
     answer_relevancy,
     context_precision,
@@ -43,9 +43,10 @@ from ragas.metrics import (
     faithfulness,
 )
 
-from dataset_utils import DATASETS_DIR, load_dataset
+from dataset_utils import DATASETS_DIR, Question, load_dataset
 from generation import Answer, answer
 from ingestion import PROJECT_ROOT
+from tracing import flush
 
 RESULTS_DIR = PROJECT_ROOT / "experiments" / "results"
 
@@ -59,6 +60,15 @@ METRIC_NAMES = [
 ]
 
 
+class EvaluationPayload(TypedDict):
+    """Serialised RAGAS results for one experiment."""
+
+    experiment: str
+    num_questions: int
+    scores: dict[str, float | None]
+    per_question: list[dict[str, object]]
+
+
 def _env(name: str) -> str:
     value = os.getenv(name)
     if not value:
@@ -69,7 +79,7 @@ def _env(name: str) -> str:
     return value
 
 
-def build_judge() -> Any:
+def build_judge() -> LangchainLLMWrapper:
     """Return the judge model: Groq by default, OpenRouter when selected."""
     load_dotenv(PROJECT_ROOT / ".env")
     llm: BaseChatModel
@@ -89,7 +99,7 @@ def build_judge() -> Any:
     return LangchainLLMWrapper(llm)
 
 
-def build_embeddings() -> Any:
+def build_embeddings() -> LangchainEmbeddingsWrapper:
     """Return Ollama embeddings used by the answer-relevancy metric."""
     load_dotenv(PROJECT_ROOT / ".env")
     return LangchainEmbeddingsWrapper(
@@ -97,12 +107,12 @@ def build_embeddings() -> Any:
     )
 
 
-def _standard_answer(item: dict) -> Answer:
+def _standard_answer(item: Question) -> Answer:
     return answer(item["user_input"])
 
 
 def build_dataset(
-    questions: list[dict], answer_fn: Callable[[dict], Answer]
+    questions: list[Question], answer_fn: Callable[[Question], Answer]
 ) -> EvaluationDataset:
     """Run the pipeline for every question and collect RAGAS samples."""
     samples: list[SingleTurnSample | MultiTurnSample] = []
@@ -143,9 +153,9 @@ def _safe_experiment(name: str) -> str:
 
 def run_evaluation(
     experiment: str = "baseline",
-    answer_fn: Callable[[dict], Answer] = _standard_answer,
+    answer_fn: Callable[[Question], Answer] = _standard_answer,
     artifacts_path: Path | None = None,
-) -> dict:
+) -> EvaluationPayload:
     """Evaluate the pipeline and persist the results under experiments/results."""
     experiment = _safe_experiment(experiment)
     questions = load_dataset(artifacts_path)
@@ -163,16 +173,18 @@ def run_evaluation(
     )
     assert isinstance(result, EvaluationResult)
 
-    frame: Any = result.to_pandas()
-    scores = {
+    frame = result.to_pandas()
+    scores: dict[str, float | None] = {
         name: float(frame[name].mean()) if name in frame.columns else None
         for name in METRIC_NAMES
     }
-    payload = {
+    payload: EvaluationPayload = {
         "experiment": experiment,
         "num_questions": len(questions),
-        "scores": _json_safe(scores),
-        "per_question": _json_safe(frame.to_dict(orient="records")),
+        "scores": cast(dict[str, float | None], _json_safe(scores)),
+        "per_question": cast(
+            list[dict[str, object]], _json_safe(frame.to_dict(orient="records"))
+        ),
     }
 
     experiment_dir = RESULTS_DIR / experiment
@@ -192,7 +204,15 @@ def main() -> None:
     parser.add_argument("experiment", nargs="?", help="Experiment name")
     parser.add_argument(
         "--technique",
-        choices=["standard", "step_back", "hyde", "multi_query"],
+        choices=[
+            "standard",
+            "step_back",
+            "hyde",
+            "multi_query",
+            "hybrid",
+            "rerank",
+            "compression",
+        ],
         default="standard",
         help="RAG technique to evaluate",
     )
@@ -201,7 +221,7 @@ def main() -> None:
     if args.technique == "step_back":
         from techniques.query_transformation.step_back import answer_step_back
 
-        answer_fn: Callable[[dict], Answer] = lambda item: answer_step_back(
+        answer_fn: Callable[[Question], Answer] = lambda item: answer_step_back(
             item["user_input"], item.get("step_back_question")
         )
         default_experiment = "step_back"
@@ -222,6 +242,24 @@ def main() -> None:
         )
         default_experiment = "multi_query"
         artifacts_path = DATASETS_DIR / "multi_query.json"
+    elif args.technique == "hybrid":
+        from techniques.retrieval.hybrid import answer_hybrid
+
+        answer_fn = lambda item: answer_hybrid(item["user_input"])
+        default_experiment = "hybrid"
+        artifacts_path = None
+    elif args.technique == "rerank":
+        from techniques.retrieval.rerank import answer_rerank
+
+        answer_fn = lambda item: answer_rerank(item["user_input"])
+        default_experiment = "rerank"
+        artifacts_path = None
+    elif args.technique == "compression":
+        from techniques.context_optimization.compression import answer_compress
+
+        answer_fn = lambda item: answer_compress(item["user_input"])
+        default_experiment = "compression"
+        artifacts_path = None
     else:
         answer_fn = _standard_answer
         default_experiment = "baseline"
@@ -240,6 +278,7 @@ def main() -> None:
     for name, value in payload["scores"].items():
         shown = f"{value:.4f}" if isinstance(value, (int, float)) else "n/a"
         print(f"  {name}: {shown}")
+    flush()
 
 
 if __name__ == "__main__":

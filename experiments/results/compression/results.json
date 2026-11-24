@@ -1,0 +1,107 @@
+{
+  "experiment": "compression",
+  "num_questions": 8,
+  "scores": {
+    "faithfulness": 0.30505952380952384,
+    "answer_relevancy": 0.7036847655012171,
+    "context_precision": 0.74999999994375,
+    "context_recall": 0.5625
+  },
+  "per_question": [
+    {
+      "user_input": "Is the RAM upgradeable on the Lenovo ThinkPad T14 Gen 5 Intel?",
+      "retrieved_contexts": [],
+      "response": "I am sorry, but the retrieved context does not contain information regarding the RAM upgradeability of the Lenovo ThinkPad T14 Gen 5 Intel. Therefore, this information is unavailable.",
+      "reference": "Yes. The laptop uses two replaceable DDR5 SO-DIMM memory modules.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "user_input": "What type and speed of RAM does the Lenovo ThinkPad T14 Gen 5 Intel support?",
+      "retrieved_contexts": [
+        "Memory Type\nDDR5-5600"
+      ],
+      "response": "According to the ThinkPad T14 Gen 5 Intel specifications, the memory type supported is DDR5-5600 (Source: ThinkPad_T14_Gen_5_Intel_Spec.pdf, page 2).",
+      "reference": "It supports DDR5-5600 SO-DIMM memory.",
+      "faithfulness": 0.3333333333333333,
+      "answer_relevancy": 0.8695058943633458,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "What is the maximum supported SSD capacity of the Lenovo ThinkPad T14 Gen 5 Intel?",
+      "retrieved_contexts": [
+        "Max Storage Support[1]\nOne drive, up to 2TB M.2 2280 SSD",
+        "M.2 2280 SSD PCIe® NVMe®, PCIe® 4.0 x4 Performance 512GB / 1TB / 2TB Opal 2.0"
+      ],
+      "response": "The maximum supported SSD capacity for the Lenovo ThinkPad T14 Gen 5 Intel is 2TB.\n\n**Source:**\n* *ThinkPad_T14_Gen_5_Intel_Spec.pdf*, page 2 and page 3.",
+      "reference": "Lenovo specifies support for one M.2 2280 SSD with a capacity of up to 2 TB.",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.998639573496723,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "What battery capacities are available for the Lenovo ThinkPad T14 Gen 5 Intel?",
+      "retrieved_contexts": [
+        "Models with black cover and 39.3Wh battery Starting at 1.31 kg (2.89 lbs)\nModels with grey cover and 39.3Wh battery Starting at 1.36 kg (2.99 lbs)\nModels with black cover and 52.5Wh battery Starting at 1.38 kg (3.05 lbs)\nModels with grey cover and 52.5Wh battery Starting at 1.43 kg (3.15 lbs)"
+      ],
+      "response": "The Lenovo ThinkPad T14 Gen 5 Intel is available with the following battery capacities:\n\n*   **39.3Wh**\n*   **52.5Wh**\n\nSource: *ThinkPad_T14_Gen_5_Intel_Spec.pdf*, page 5.",
+      "reference": "The laptop is available with 39.3 Wh or 52.5 Wh rechargeable lithium-ion batteries.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0000000000000002,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "Can the RAM be upgraded on the Dell XPS 13 9340?",
+      "retrieved_contexts": [
+        "Memory slots No memory slots\nNOTE: The memory is integrated on the system board \nand is not upgradeable.",
+        "● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 64 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)"
+      ],
+      "response": "No, the RAM on the Dell XPS 13 9340 cannot be upgraded. The memory is integrated directly onto the system board and there are no memory slots available (*Dell XPS 13 9340 Owner's Manual*, page 14).",
+      "reference": "No. The memory is integrated into the system board and is not upgradeable.",
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.9949194520240436,
+      "context_precision": 0.99999999995,
+      "context_recall": 0.5
+    },
+    {
+      "user_input": "What type and speed of memory does the Dell XPS 13 9340 use?",
+      "retrieved_contexts": [
+        "● 8 GB: LPDDR5, 6400 MT/s, dual-channel (onboard)\n● 16 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 32 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)\n● 64 GB: LPDDR5x, 7467 MT/s, dual-channel (onboard)",
+        "Memory type LPDDR5/LPDDR5x\nMemory speed ● 6400 MT/s\n● 7467 MT/s"
+      ],
+      "response": "The Dell XPS 13 9340 uses LPDDR5 or LPDDR5x memory. The specific memory type and speed depend on the configuration, as detailed in the table below:\n\n| Memory Capacity | Memory Type | Memory Speed |\n| :--- | :--- | :--- |\n| 8 GB | LPDDR5 | 6400 MT/s |\n| 16 GB | LPDDR5x | 7467 MT/s |\n| 32 GB | LPDDR5x | 7467 MT/s |\n| 64 GB | LPDDR5x | 7467 MT/s |\n\n*Source: Dell XPS 13 9340 Owner's Manual, page 14.*",
+      "reference": "It uses onboard LPDDR5 or LPDDR5x memory. Supported speeds are 6400 MT/s and 7467 MT/s, depending on the configuration.",
+      "faithfulness": 0.8571428571428571,
+      "answer_relevancy": 0.9117964786637557,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "user_input": "Does the Dell XPS 13 9340 have a dedicated Ethernet port?",
+      "retrieved_contexts": [],
+      "response": "I do not have access to information regarding the Dell XPS 13 9340 as no relevant documentation was retrieved. Therefore, I cannot confirm whether it has a dedicated Ethernet port.",
+      "reference": "No. The Dell XPS 13 9340 does not have a dedicated network port.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "user_input": "What SSD configurations are supported by the Dell XPS 13 9340?",
+      "retrieved_contexts": [
+        "M.2 One M.2 slot for M.2 2230 or M.2 2280 solid-state drive"
+      ],
+      "response": "The Dell XPS 13 9340 features one M.2 slot that supports the following solid-state drive configurations:\n\n*   M.2 2230\n*   M.2 2280\n\n**Source:** *Dell XPS 13 9340 Owner's Manual, page 15*",
+      "reference": "It supports one M.2 2230 or M.2 2280 PCIe Gen 4 NVMe SSD. The M.2 2230 option is available in 512 GB, while M.2 2280 options include 1 TB, 2 TB, and 4 TB.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.8546167254618676,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0
+    }
+  ]
+}
